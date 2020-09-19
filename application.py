@@ -15,6 +15,12 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+# Setting API key
+if not os.environ.get("API_KEY"):
+    try:
+        os.environ["API_KEY"] = "pk_0ed3a09887ba4d199bebbb9a3561d00f"
+    except:
+        raise RuntimeError("API_KEY not set")
 
 # Ensure responses aren't cached
 @app.after_request

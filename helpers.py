@@ -1,4 +1,3 @@
-import apikeys
 import os
 import requests
 import urllib.parse
@@ -42,7 +41,6 @@ def lookup(symbol):
 
     # Contact API
     try:
-        os.system('export API_KEY='+apikeys.APIKEYvalue)
         api_key = os.environ.get("API_KEY")
         response = requests.get(
             f"https://cloud-sse.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}")
