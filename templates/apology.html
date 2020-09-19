@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+
+    <!--Displays error-->
+    <p>{{ top }}</p>
+    <p>{{ bottom }}</p>
+
+    <!--Return button-->
+    <form action="/">
+    <button class="btn btn-primary" type="submit" >Return</button>
+    </form>
+{% endblock %}
