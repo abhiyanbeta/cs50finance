@@ -39,8 +39,7 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
-db = SQL("postgres://ksttbfusnqbjyk:0b754336d826def366d1718a3269b3efcbde507ec9c9dbec79f0335790abb8bf@ec2-54-228-250-82.eu-west-1.compute.amazonaws.com:5432/dcunpf7nq0m33c
-")
+db = SQL("postgres://ksttbfusnqbjyk:0b754336d826def366d1718a3269b3efcbde507ec9c9dbec79f0335790abb8bf@ec2-54-228-250-82.eu-west-1.compute.amazonaws.com:5432/dcunpf7nq0m33c")
 
 # Make sure API key is set
 if not os.environ.get("API_KEY"):
