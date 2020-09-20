@@ -88,12 +88,12 @@ def index():
         holdings.append({
             "symbol": stock["symbol"],
             "name": stock["name"],
-            "shares": row["totalShares"],
+            "shares": row["SUM(shares)"],
             "price": usd(stock["price"]),
-            "total": usd(stock["price"] * row["totalShares"])
+            "total": usd(stock["price"] * row["SUM(shares)"])
         })
 
-        grand_total += stock["price"] * row["totalShares"]
+        grand_total += stock["price"] * row["SUM(shares)"]
 
     # Obtain current cash user has
     rows = db.execute("SELECT cash FROM users WHERE id=:user_id", user_id=session["user_id"])
@@ -345,7 +345,7 @@ def sell():
         # Error checking
         for row in rows:
             if row["symbol"] == symbol:  # Symbol entered by user matches db
-                if shares > row["totalShares"]:  # Seeing if user trying to sell more shares than they have
+                if shares > row["SUM(shares)"]:  # Seeing if user trying to sell more shares than they have
                     return apology("Too many shares.", 400)
 
         # Check how much cash user has currently (aka if they can afford to buy it)
