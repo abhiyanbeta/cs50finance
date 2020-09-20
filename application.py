@@ -73,11 +73,11 @@ def index():
 
     # Obtaining all the shares the current user owns
     rows = db.execute("""
-        SELECT symbol, SUM(shares) as totalShares
+        SELECT symbol, SUM(shares)
         FROM transactions
         WHERE user_id = :user_id
         GROUP BY symbol
-        HAVING totalShares > 0;
+        HAVING SUM(shares) > 0;
     """, user_id=session["user_id"])
 
     # Appending holdings into an empty array
@@ -335,11 +335,11 @@ def sell():
 
         # Find out what they own
         rows = db.execute("""
-            SELECT symbol, SUM(shares) as totalShares
+            SELECT symbol, SUM(shares)
             FROM transactions
             WHERE user_id=:user_id
             GROUP BY symbol
-            HAVING totalShares > 0;
+            HAVING SUM(shares) > 0;
         """, user_id=session["user_id"])
 
         # Error checking
